@@ -439,7 +439,7 @@ select.form-control { width: 110px; }
             
             const dType = document.querySelector("#dType-e").value; // 타입 셀렉트
             const lType = document.querySelector("#lType-e").value; // 단위 셀렉트
-            const mType = document.querySelector("#lType-n").value; // 담당자 셀렉트 (#lType-n 반영)
+//             const mType = document.querySelector("#lType-n").value; // 담당자 셀렉트 (#lType-n 반영)
 
             // 제품명 빈값 검증
             if (!nameInput.value.trim()) {
@@ -481,10 +481,10 @@ select.form-control { width: 110px; }
                 alert("단위를 선택해주세요.");
                 return;
             }
-            if (mType === "all" || mType === "") {
-                alert("담당자를 선택해주세요.");
-                return;
-            }
+//             if (mType === "all" || mType === "") {
+//                 alert("담당자를 선택해주세요.");
+//                 return;
+//             }
 
             // 모든 유효성 관문 통과 시 /codeinsert 주소로 전송
             const insert_form = document.querySelector("#insert-form");
