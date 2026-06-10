@@ -14,7 +14,7 @@ public class CodeManageDTO {
 	String item_status;
 	String emp_num;
 	String facility_num;
-	int safe;
+	String safe;
 	String keyword;
 	
 	String ename;

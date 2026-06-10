@@ -1,3 +1,10 @@
+팀원이 업데이트한 최신 코드(`b3a49bc8b1a45ff682ec870fcf26673b263eb686` 버전)를 완벽하게 반영하고, 병합 충돌 표시(`<<<<<<< HEAD`, `=======`, `>>>>>>>`) 및 이전 주석 처리되었던 중복 코드를 깨끗하게 정리한 전체 JSP 소스 코드입니다.
+
+자바스크립트 유효성 검증 부분에서 로그인 세션 만료 방어 로직(`emp_num` 검증)이 들어간 팀원의 최신 코드를 정상적으로 남겨두었습니다.
+
+---
+
+```html
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -84,6 +91,7 @@ select.form-control { width: 110px; }
 
 /* 모달 그리드: 유연한 필드 배치를 위한 플렉스 그리드 구조 및 크기별 가변 클래스 설정 */
 .modal-grid { display: flex; flex-wrap: wrap; gap: 15px 20px; margin-bottom: 20px; width: 100%; box-sizing: border-box; }
+.modal-grid { display: flex; flex-wrap: wrap; gap: 15px 20px; margin-bottom: 20px; width: 100%; box-sizing: border-box; }
 .modal-field { display: flex; flex-direction: column; gap: 6px; width: calc(50% - 10px); box-sizing: border-box; }
 .modal-field.quarter { width: calc(25% - 15px); box-sizing: border-box; }
 .modal-field.full { width: 100%; box-sizing: border-box; }
@@ -108,15 +116,12 @@ select.form-control { width: 110px; }
 						<div class="sch-row">
 							<div class="sch-left">
 								<span class="label">▶ 타입</span>
-								<!-- 💡 name="type" 추가 -->
 								<select id="dType" name="type" class="form-control">
 									<option value="">선택</option>
 									<c:forEach var="b" items="${ selectd }">
-										<!-- 💡 value에 이름이 아닌 부서'번호'를 바인딩해야 정확히 검색됩니다 -->
 										<option value="${b.type}">${ b.type }</option>
 									</c:forEach>
 								</select> <span class="label">▶ 단위</span>
-								<!-- 💡 name="unit" 추가 -->
 								<select id="lType" name="unit" class="form-control">
 									<option value="">선택</option>
 									<c:forEach var="l" items="${ selectl }">
@@ -128,11 +133,9 @@ select.form-control { width: 110px; }
 							<div class="sch-right">
 								<div class="sch-input-box">
 									<span style="color: #888;">🔍</span>
-									<!-- 💡 name="keyword" 추가 -->
 									<input type="text" id="keyword" name="keyword"
 										value="${param.keyword}" placeholder=" 제품명 / 코드명">
 								</div>
-								<!-- 💡 함수 연결을 위해 onclick 속성 부여 -->
 								<button type="button" class="btn-sch">검색</button>
 								<button type="button" class="select-reset"
 									onclick="resetSearch()">검색 초기화</button>
@@ -154,7 +157,6 @@ select.form-control { width: 110px; }
 								<th>사용여부</th>
 								<th>안전재고</th>
 								<th style="width: 100px;">기능</th>
-								<!-- 💡 헤더에 기능 칸 추가 -->
 							</tr>
 						</thead>
 						<tbody id="stock-body">
@@ -179,12 +181,11 @@ select.form-control { width: 110px; }
 												</c:if> <c:if test="${a.item_status eq 'N'}">
 													<span style="color: #aaa; font-size: 13px;">중단됨</span>
 												</c:if>
-												</td>
+											</td>
 										</tr>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
-									<!-- 데이터 없을 때 출력되는 5줄 (colspan을 9로 확장) -->
 									<c:forEach var="i" begin="1" end="5">
 										<tr>
 											<td style="font-weight: bold; color: #888;">${i}</td>
@@ -211,10 +212,6 @@ select.form-control { width: 110px; }
 			</main>
 		</div>
 				
-				
-				
-				
-				
 				<!-- 코드 등록 -->
 				<div id="regModal" class="modal-overlay" style="display: none;">
 					<div class="modal-box">
@@ -224,25 +221,23 @@ select.form-control { width: 110px; }
 							<div class="modal-grid">
 
 								<div class="modal-field">
-									<label for="quantity">제품명</label> <input type="text"
+									<label for="name">제품명</label> <input type="text"
 										name="name" id="name" placeholder="이름">
 								</div>
 								<div class="modal-field">
-									<label for="quantity">기준가격</label> <input type="text"
+									<label for="price">기준가격</label> <input type="text"
 										name="price" id="price" placeholder="기준가격">
 								</div>
 
 								<div class="modal-field">
-									<label for="quantity">안전재고</label> <input type="text"
+									<label for="safe">안전재고</label> <input type="text"
 										name="safe" id="safe" placeholder="안전재고">
 								</div>
 
-								<!-- 1. 맨 위 div를 modal-grid로 바꾸고 flex 스타일 주입 -->
-								<!-- type, unit, emp_num을 한 세트로 묶어 오른쪽 48.5% 공간을 정확하게 차지하도록 설정 -->
 								<div class="dept-auth-wrap"
 									style="width: 48% !important; display: flex !important; justify-content: space-between !important; align-items: flex-end !important; box-sizing: border-box !important;">
 
-									<!-- type 영역 (우측 세트 내부에서 왼쪽 반 차지) -->
+									<!-- type 영역 -->
 									<div class="modal-field"
 										style="width: 47% !important; display: flex !important; flex-direction: column !important; gap: 6px !important;">
 										<label for="dType-e">타입</label> <select id="dType-e"
@@ -255,7 +250,7 @@ select.form-control { width: 110px; }
 										</select>
 									</div>
 
-									<!-- unit 영역 (우측 세트 내부에서 오른쪽 반 차지) -->
+									<!-- unit 영역 -->
 									<div class="modal-field"
 										style="width: 47% !important; display: flex !important; flex-direction: column !important; gap: 6px !important;">
 										<label for="lType-e">단위</label> <select id="lType-e"
@@ -269,10 +264,11 @@ select.form-control { width: 110px; }
 									</div>
 
 								</div>
-								<!-- emp_num 영역 (우측 세트 내부에서 오른쪽 반 차지) -->
+								
+								<!-- emp_num 영역 -->
 								<div class="modal-field">
-									<label for="quantity">담당자</label> <input type="text"
-										name="safe" id="safe" readonly="readonly" value="${ loginUser.ename }">
+									<label for="emp_num">담당자</label> <input type="text"
+										name="emp_num" id="emp_num" readonly="readonly" value="${ loginUser.emp_num }">
 								</div>
 
 							</div>
@@ -285,83 +281,72 @@ select.form-control { width: 110px; }
 					</div>
 				</div>
 
-
-
-				<!-- 스크립트 -->
 				<!-- 스크립트 -->
 				<script>
     // ==========================================
-    // 1. 모달창 열기 / 닫기 및 [팀 표준] 취소 제어
+    // 1. 모달창 열기 / 닫기 및 취소 제어
     // ==========================================
     const plus_btn = document.querySelector(".btn-reg");     // + 등록하기 버튼
     const modal = document.querySelector(".modal-overlay");  // 모달창 껍데기
     const btn_cancel = document.querySelector(".btn-cancel"); // 취소 버튼
 
-    // [열기] 등록하기 버튼 클릭 시 모달 띄우기
     if (plus_btn && modal) {
         plus_btn.addEventListener('click', () => {
             modal.style.display = "block";
         });
     }
 
-    // [닫기 및 리셋] [팀 표준] 취소 버튼 연동 (컨펌 후 화면 리셋)
     if (btn_cancel) {
         btn_cancel.addEventListener('click', () => {
             if (confirm("등록을 취소하시겠습니까?")) {
-                location.reload(); // 화면을 새로고침하여 입력값 초기화 및 모달 닫기
+                location.reload();
             }
         });
     }
 
     // ==========================================
-    // 2. [팀 표준] 알림창 제어 및 주소창 쿼리스트링 제거
+    // 2. 알림창 제어 및 주소창 쿼리스트링 제거
     // ==========================================
     const msgFlag = "${msg}";
     console.log("msgFlag: ", msgFlag);
     if (msgFlag == "true") {
         alert("등록되었습니다.");
-        // 등록 성공 후 주소창에 남아있는 ?msg=true 쓰레기 값 깨끗이 청소
         window.history.replaceState({}, document.title, window.location.pathname);
     } else if (msgFlag == "false") {
         alert("등록에 실패했습니다.");
     }
 
     // ==========================================
-    // 3. 🔍 검색 실행 및 초기화 기능 (type, unit 구조 맞춤)
+    // 3. 🔍 검색 실행 및 초기화 기능
     // ==========================================
- ////////////////////////
-		// 종한 로직
-// 		검색 버튼 클릭시 아작스
-		const btn_sch = document.querySelector(".btn-sch");
+	const btn_sch = document.querySelector(".btn-sch");
+	if (btn_sch) {
 		btn_sch.addEventListener('click', ()=>{
 			movePage(1)
 		})
-		
-		//페이징 관련 함수
-		function movePage(pageNum) {
-	    
+	}
+	
+	function movePage(pageNum) {
 	    const type = document.getElementById("dType").value;
 	    const level = document.getElementById("lType").value;
 	    const keyword = document.getElementById("keyword").value.trim();
 
 	    const params = new URLSearchParams();
-	    params.append("page", pageNum); // 누른 페이지 번호를 전달
+	    params.append("page", pageNum);
 	    params.append("type", type);
 	    params.append("level", level);
 	    params.append("keyword", keyword);
 	    
-	   // 변경할 코드 (안전한 문자열 결합 방식)
-	    		fetch('/codesearch?' + params.toString())
+		fetch('/codesearch?' + params.toString())
 	    .then(response => response.json())
 	    .then(data => {
 	    	if(data.searchResult.length == 0){
 	    		 let tbody = document.querySelector("#stock-body");
-	    	    tbody.innerHTML = "<tr><td colspan='8'>조회된 결과가 없습니다.</td></tr>";
-	    	    renderPagination(data.pageInfo); // 페이지 정보도 갱신하여 페이징 버튼도 사라지게 처리
-	    	    return;
+	    	     tbody.innerHTML = "<tr><td colspan='9'>조회된 결과가 없습니다.</td></tr>";
+	    	     renderPagination(data.pageInfo);
+	    	     return;
 	    	}
 	        if(data.status === "good"){
-	            // 1. 테이블 데이터 갱신
 	            let tbody = document.querySelector("#stock-body");
 	            tbody.innerHTML = "";
 	            
@@ -379,48 +364,30 @@ select.form-control { width: 110px; }
 	                    <td>\${item.item_status}</td>
 	                    <td>\${item.safe}</td>
 	                </tr>`;
-	                
-// 	                html += `<tr>
-// 	                    <td style='font-weight: bold; color: #555;'>\${i + 1 + (data.pageInfo.pageNum - 1) * 5}</td>
-// 	                    <td>\${item.ITEM_NUM}</td>
-// 	                    <td><a class='link-txt'>\${item.CODE}</a></td>
-// 	                    <td>\${item.NAME}</td>
-// 	                    <td>\${item.TYPE}</td>
-// 	                    <td>\${item.UNIT}</td>
-// 	                    <td>\${item.PRICE}</td>
-// 	                    <td>\${item.ITEM_STATUS}</td>
-// 	                    <td>\${item.SAFE}</td>
-// 	                </tr>`;
 	            }
 	            tbody.innerHTML = html;
 	            
 	            renderPagination(data.pageInfo);
 	
-	         // 수정 코드 (&level=\${level} 추가)
 	            const newUrl = window.location.pathname + `?page=\${pageNum}&type=\${type}&level=\${level}&keyword=\${keyword}`;
 	            window.history.pushState({path: newUrl}, '', newUrl);
 	        }
 	    });
 	}
 		
-
-    // [검색 초기화]
     function resetSearch() {
         document.getElementById("dType").value = "";
         document.getElementById("lType").value = "";
         document.getElementById("keyword").value = "";
-        
-        // 코드 관리 컨트롤러 본래 주소로 깔끔하게 리다이렉트
         location.href = "/codesearch"; 
     }
 
-    // [엔터키 검색 편의성 증가]
     const keywordInput = document.getElementById("keyword");
     if (keywordInput) {
         keywordInput.addEventListener("keyup", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault(); 
-                doSearch(); 
+                movePage(1); 
             }
         });
     }
@@ -432,23 +399,20 @@ select.form-control { width: 110px; }
     if (btn_plus) {
         btn_plus.addEventListener('click', () => {
             
-            // HTML 도면에 정의된 인풋 및 셀렉트 객체 정확히 매핑
-            const nameInput = document.querySelector("input[name='name']");      // 제품명
-            const priceInput = document.querySelector("input[name='price']");    // 기준가격
-            const safeInput = document.querySelector("input[name='safe']");      // 안전재고
+            const nameInput = document.querySelector("input[name='name']");      
+            const priceInput = document.querySelector("input[name='price']");    
+            const safeInput = document.querySelector("input[name='safe']");      
             
-            const dType = document.querySelector("#dType-e").value; // 타입 셀렉트
-            const lType = document.querySelector("#lType-e").value; // 단위 셀렉트
-//             const mType = document.querySelector("#lType-n").value; // 담당자 셀렉트 (#lType-n 반영)
+            const dType = document.querySelector("#dType-e").value; 
+            const lType = document.querySelector("#lType-e").value; 
+            const emp_num = document.querySelector("#emp_num").value; 
 
-            // 제품명 빈값 검증
             if (!nameInput.value.trim()) {
                 alert("제품명을 입력해주세요.");
                 nameInput.focus();
                 return;
             }
             
-            // 기준가격 빈값 및 숫자 검증 (오라클 ORA-01722 무조건 방어)
             if (!priceInput.value.trim()) {
                 alert("기준가격을 입력해주세요.");
                 priceInput.focus();
@@ -460,7 +424,6 @@ select.form-control { width: 110px; }
                 return;
             }
             
-            // 안전재고 빈값 및 숫자 검증
             if (!safeInput.value.trim()) {
                 alert("안전재고를 입력해주세요.");
                 safeInput.focus();
@@ -472,7 +435,6 @@ select.form-control { width: 110px; }
                 return;
             }
 
-            // 셀렉트 박스 필수 선택 검증 (HTML의 "all" 또는 빈값 선택 차단)
             if (dType === "all" || dType === "") {
                 alert("타입을 선택해주세요.");
                 return;
@@ -481,29 +443,25 @@ select.form-control { width: 110px; }
                 alert("단위를 선택해주세요.");
                 return;
             }
-//             if (mType === "all" || mType === "") {
-//                 alert("담당자를 선택해주세요.");
-//                 return;
-//             }
+            
+            if (!emp_num || emp_num.trim() === "") {
+                alert("로그인 정보가 없거나 세션이 만료되었습니다. 다시 로그인해주세요.");
+                return;
+            }
 
-            // 모든 유효성 관문 통과 시 /codeinsert 주소로 전송
             const insert_form = document.querySelector("#insert-form");
             insert_form.submit();
         });
     }
     
     // ==========================================
-    // 5. 🚫 [GET 방식] 항목 비활성화 다이렉트 전송 함수
+    // 5. 🚫 항목 비활성화 다이렉트 전송 함수
     // ==========================================
     function disableItem(itemNum) {
-        // HTML 버튼에서 던져준 진짜 item_num 숫자가 매개변수로 쏙 들어옵니다.
         if (confirm(`번호 [\${itemNum}] 항목을 비활성화(N) 처리하시겠습니까?`)) {
-            // 요청하신 /codemanage 주소 규격에 맞춰 GET 방식으로 화면을 전환합니다
             location.href = `/codeDisable?item_num=\${itemNum}`;
         }
     }
-    
-    
 </script>
 </body>
 </html>

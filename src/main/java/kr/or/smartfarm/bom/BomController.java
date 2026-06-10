@@ -135,7 +135,7 @@ System.out.println(searchMap);
 	@ResponseBody
 	public Map<String, Object> predictLoss(@RequestBody BomDTO bomDTO) {
 		// 1. 파이썬 Flask 서버 주소
-        String pythonUrl = "http://127.0.0.1:5000/predict";
+        String pythonUrl = "http://116.36.205.25:5000/predict";
 
         // 2. 스프링 HTTP 통신 객체 생성
         RestTemplate restTemplate = new RestTemplate();
