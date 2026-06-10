@@ -16,6 +16,8 @@ public class CodeManageDTO {
 	String facility_num;
 	String safe;
 	String keyword;
+	String manage;
+	
 	
 	String ename;
 

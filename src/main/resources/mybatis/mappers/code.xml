@@ -99,10 +99,10 @@
         SAFE          <!-- 9. 안전재고 (화면 입력) -->
     ) VALUES (
         <!-- 1. ITEM_NUM: 시퀀스 자동 증가 -->
-        item_seq.NEXTVAL,
+        items_seq.NEXTVAL,
         
         <!-- 2. CODE: 시퀀스 번호를 결합하여 'POT061' 형태로 자동 생성 (오라클 규격) -->
-        'POT' || LPAD(item_seq.CURRVAL, 3, '0'),
+        'POT' || LPAD(items_seq.CURRVAL, 3, '0'),
         
         <!-- 3 ~ 6. 화면 모달창 입력값 바인딩 -->
         #{name},
@@ -111,7 +111,7 @@
         #{price},
         
         <!-- 7. ITEM_STATUS: 등록 시 무조건 활성('A') 상태로 자동 주입 -->
-        'A',
+        'Y',
         
         <!-- 8 ~ 9. 화면 모달창 입력값 바인딩 -->
         #{emp_num},

@@ -272,7 +272,7 @@ select.form-control { width: 110px; }
 								<!-- emp_num 영역 (우측 세트 내부에서 오른쪽 반 차지) -->
 								<div class="modal-field">
 									<label for="quantity">담당자</label> <input type="text"
-										name="safe" id="safe" readonly="readonly" value="${ loginUser.ename }">
+										name="emp_num" id="emp_num" readonly="readonly" value="${ loginUser.emp_num }">
 								</div>
 
 							</div>
@@ -439,7 +439,7 @@ select.form-control { width: 110px; }
             
             const dType = document.querySelector("#dType-e").value; // 타입 셀렉트
             const lType = document.querySelector("#lType-e").value; // 단위 셀렉트
-            const mType = document.querySelector("#lType-n").value; // 담당자 셀렉트 (#lType-n 반영)
+            const emp_num = document.querySelector("#emp_num").value; // 담당자 셀렉트 (#lType-n 반영)
 
             // 제품명 빈값 검증
             if (!nameInput.value.trim()) {
@@ -481,10 +481,13 @@ select.form-control { width: 110px; }
                 alert("단위를 선택해주세요.");
                 return;
             }
-            if (mType === "all" || mType === "") {
-                alert("담당자를 선택해주세요.");
+            
+         // [유효성 검증] 로그인 세션이 끊겨서 값이 비어있는 경우 방어
+            if (!emp_num || emp_num.trim() === "") {
+                alert("로그인 정보가 없거나 세션이 만료되었습니다. 다시 로그인해주세요.");
                 return;
             }
+        
 
             // 모든 유효성 관문 통과 시 /codeinsert 주소로 전송
             const insert_form = document.querySelector("#insert-form");
