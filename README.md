@@ -6,12 +6,10 @@
 목적: 스마트팜 환경에 최적화된 제조 실행 시스템 구축을 통한 생산 데이터 관리 및 공정 효율화
 
 사용 기술
+
 Frontend: HTML5, CSS3, JavaScript, jQuery, Ajax, JSP
-
 Backend: Java, Spring Framework, MyBatis, REST API
-
 Database: Oracle
-
 Tools: Git, GitHub, STS, DBeaver, ERDCloud
 
 수행 역할
