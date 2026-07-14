@@ -11,7 +11,7 @@ Frontend: HTML5, CSS3, JavaScript, jQuery, Ajax, JSP
 
 Backend: Java, Spring Framework, MyBatis, REST API
 
-Database: Oracle
+Database: Oracle DataBase
 
 Tools: Git, GitHub, STS, DBeaver, ERDCloud
 
