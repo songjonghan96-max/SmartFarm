@@ -8,9 +8,13 @@
 사용 기술
 
 Frontend: HTML5, CSS3, JavaScript, jQuery, Ajax, JSP
+
 Backend: Java, Spring Framework, MyBatis, REST API
+
 Database: Oracle
+
 Tools: Git, GitHub, STS, DBeaver, ERDCloud
+
 
 수행 역할
 기획 및 분석: 관련 MES 시장 조사 및 차별점 파악, 구현에 필요한 기능 명세화
