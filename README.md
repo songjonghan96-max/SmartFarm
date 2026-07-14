@@ -7,8 +7,11 @@
 
 사용 기술
 Frontend: HTML5, CSS3, JavaScript, jQuery, Ajax, JSP
+
 Backend: Java, Spring Framework, MyBatis, REST API
+
 Database: Oracle
+
 Tools: Git, GitHub, STS, DBeaver, ERDCloud
 
 수행 역할
