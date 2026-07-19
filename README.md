@@ -50,3 +50,5 @@
 * **Back-end** : Java, Spring Framework, MyBatis, REST API
 * **WAS** : Apache Tomcat
 * **AI Machine Learning** : Python, FastAPI
+<hr>
+* AI 모델링 및 FastAPI 서버, C# 제어 모듈의 경우, 프로젝트 진행 당시 하드웨어 연동 테스트 및 내부 보안/관리상의 이유로 본 웹 서버 레포지토리와 분리하여 독립적으로 개발 및 관리되었습니다. 이로 인해 본 레포지토리의 언어 통계(Languages)에는 반영되어 있지 않습니다.
